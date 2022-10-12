@@ -19,6 +19,11 @@
             </span>
 
         </div>
+        <div>
+            <span class="font-weight-bold">Ctegoria:
+            {{($post->category)?$post->category->name:'-'}}
+            </span>
+        </div>
         <a href="{{route('admin.posts.index')}}" class="btn btn-info">Torna alla Lista</a>
     </div>
 

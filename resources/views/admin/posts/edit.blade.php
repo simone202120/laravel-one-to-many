@@ -5,7 +5,17 @@
         <form action="{{route('admin.posts.update', ['post' => $post->id])}}" method="post">
             @method('PUT')
             @csrf
-                        
+
+            <div class="form-group mb-3">
+                <label for="category_id">Category</label>
+
+                <select name="category_id" class="form-control" id="category_id">
+                    <option {{(old('category_id')==" ")?'selected':''}} value="">Nessuna categoria</option>
+                    @foreach ($categories as $category)
+                        <option {{(old('category_id')==$category->id)?'selected':''}} value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>    
             <div class="form-group">
                 <label for="title">Titolo</label>
                 <input type="text" class="form-control" id="title" name="title" value="{{old('title', $post->title)}}">
